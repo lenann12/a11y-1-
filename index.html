@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор стоимости доработки сайта для доступности</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: block; margin-top: 10px; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 20px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Калькулятор стоимости доработки сайта для доступности</h1>
+
+    <label for="pages">Количество страниц:</label>
+    <input type="number" id="pages" min="1" value="1">
+
+    <label for="complexity">Сложность сайта:</label>
+    <select id="complexity">
+        <option value="1">Простой (статичные страницы)</option>
+        <option value="1.5">Средний (формы, интерактивные элементы)</option>
+        <option value="2">Сложный (динамический контент, мультимедиа)</option>
+    </select>
+
+    <label for="rate">Стоимость часа работы (руб.):</label>
+    <input type="number" id="rate" min="500" value="1000">
+
+    <button onclick="calculate()">Рассчитать стоимость</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculate() {
+            const pages = parseInt(document.getElementById('pages').value);
+            const complexity = parseFloat(document.getElementById('complexity').value);
+            const rate = parseInt(document.getElementById('rate').value);
+
+            // Оценка времени на одну страницу (в часах)
+            const timePerPage = 4; // Среднее время на доработку одной страницы
+            const totalHours = pages * timePerPage * complexity;
+
+            // Общая стоимость
+            const totalCost = totalHours * rate;
+
+            // Вывод результата
+            document.getElementById('result').innerText = `Примерная стоимость доработки: ${totalCost.toLocaleString()} руб.`;
+        }
+    </script>
+</body>
+</html>
